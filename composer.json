@@ -1,0 +1,13 @@
+{
+    "name": "david/discord-php-bot",
+    "description": "An example bot that uses DiscordPHP",
+    "require": {
+        "team-reflex/discord-php": "dev-websockets"
+    },
+    "authors": [
+        {
+            "name": "David",
+            "email": "david@team-reflex.com"
+        }
+    ]
+}
