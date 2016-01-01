@@ -101,6 +101,7 @@ class Bot
 						}
 					} else {
 						$message->reply('You do not have permission to do this!');
+						echo "[Auth] User {$message->author->username} blocked from running {$this->config->prefix}{$command}, <@{$message->author->id}>\r\n";
 					}
 				}
 			});

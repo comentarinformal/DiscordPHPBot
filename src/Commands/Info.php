@@ -22,7 +22,7 @@ class Info
 		$str  = "**DiscordPHP Bot**\r\n";
 		$str .= "**Library:** _DiscordPHP_ ".Discord::VERSION."\r\n";
 
-		$sha = substr(exec('git rev-parse HEAD'), 0, 6);
+		$sha = substr(exec('git rev-parse HEAD'), 0, 7);
 
 		$str .= "**Current Version:** `{$sha}`\r\n";
 		$str .= "**PHP Version:** ".PHP_VERSION."\r\n";
