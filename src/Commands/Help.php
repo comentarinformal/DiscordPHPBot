@@ -18,8 +18,12 @@ class Help
 	{
 		$str = '**Commands:** ';
 
+		$user_level = (isset($config['perms']['perms'][$message->author->id])) ? $config['perms']['perms'][$message->author->id] : $config['perms']['default'];
+
 		foreach ($bot->getCommands() as $command => $data) {
-			$str .= $command . ', ';
+			if ($user_level >= $data['perms']) {
+				$str .= $command . ', ';
+			}
 		}
 
 		$message->reply(substr($str, 0, -2));
