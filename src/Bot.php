@@ -2,6 +2,7 @@
 
 namespace Bot;
 
+use Bot\Config;
 use Discord\Discord;
 use Discord\WebSockets\Event;
 use Discord\WebSockets\WebSocket;
@@ -31,23 +32,15 @@ class Bot
 	protected $commands = [];
 
 	/**
-	 * The config instance.
-	 *
-	 * @var Config 
-	 */
-	protected $config;
-
-	/**
 	 * Constructs the bot instance.
 	 *
-	 * @param Config $config
 	 * @return void 
 	 */
-	public function __construct($config)
+	public function __construct()
 	{
-		$this->discord = new Discord($config->email, $config->password);
+		$config = Config::getConfig();
+		$this->discord = new Discord($config['email'], $config['password']);
 		$this->websocket = new WebSocket($this->discord);	
-		$this->config = $config;
 	}
 
 	/**
@@ -86,23 +79,25 @@ class Bot
 			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
 				$content = explode(' ', $message->content);
 
-				if ($content[0] == $this->config->prefix . $command) {
+				$config = Config::getConfig();
+
+				if ($content[0] == $config['prefix'] . $command) {
 					Arr::forget($content, 0);
-					$user_perms = @$this->config->perms->perms->{$message->author->id};
+					$user_perms = @$config['perms']['perms'][$message->author->id];
 
 					if (empty($user_perms)) {
-						$user_perms = $this->config->perms->default;
+						$user_perms = $config['perms']['default'];
 					}
 
 					if ($user_perms >= $data['perms']) {
 						try {
-							$data['class']::handleMessage($message, $content, $discord, $this->config, $this);
+							$data['class']::handleMessage($message, $content, $discord, $config, $this);
 						} catch (\Exception $e) {
 							$message->reply("There was an error running the command. `{$e->getMessage()}`");
 						}
 					} else {
 						$message->reply('You do not have permission to do this!');
-						echo "[Auth] User {$message->author->username} blocked from running {$this->config->prefix}{$command}, <@{$message->author->id}>\r\n";
+						echo "[Auth] User {$message->author->username} blocked from running {$config['prefix']}{$command}, <@{$message->author->id}>\r\n";
 					}
 				}
 			});

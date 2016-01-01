@@ -5,32 +5,31 @@ namespace Bot;
 class Config
 {
 	/**
-	 * The Config object.
-	 *
-	 * @var object 
-	 */
-	protected $config;
-
-	/**
-	 * Loads the config file.
+	 * Gets the config file.
 	 *
 	 * @param string $filename 
-	 * @return void 
+	 * @return array 
 	 */
-	public function __construct($filename = 'config.json')
+	public static function getConfig($filename = 'config.json')
 	{
-		$file = file_get_contents($_SERVER['PWD'] . "/{$filename}");
-		$this->config = json_decode($file);
+		$file = file_get_contents($_SERVER['PWD'] . '/' . $filename);
+
+		return json_decode($file, true);
 	}
 
 	/**
-	 * Handles dynamic get calls to the class.
+	 * Saves the config file.
 	 *
-	 * @param string $var 
-	 * @return mixed 
+	 * @param array $config 
+	 * @param string $filename
+	 * @return array 
 	 */
-	public function __get($var)
+	public static function saveConfig($config, $filename = 'config.json')
 	{
-		return $this->config->{$var};
+		$json = json_encode($config);
+		
+		file_put_contents($_SERVER['PWD'] . '/' . $filename, $json);
+
+		return $json;
 	}
 }

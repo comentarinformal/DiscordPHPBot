@@ -11,17 +11,8 @@ include 'vendor/autoload.php';
 echo "DiscordPHPBot\r\n";
 
 try {
-	echo "Loading config...\r\n";
-	$config = new Config();
-	echo "Loaded config.\r\n";
-} catch (\Exception $e) {
-	echo "Failed loading config. {$e->getMessage()}\r\n";
-	die(1);
-}
-
-try {
 	echo "Initilizing the bot...\r\n";
-	$bot = new Bot($config);
+	$bot = new Bot();
 	echo "Initilized bot.\r\n";
 } catch (\Exception $e) {
 	echo "Could not initilize bot. {$e->getMessage()}\r\n";
@@ -37,6 +28,9 @@ try {
 	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2);
 	$bot->addCommand('info', \Bot\Commands\Info::class, 1);
 	$bot->addCommand('meme', \Bot\Commands\Meme::class, 1);
+	$bot->addCommand('setlevel', \Bot\Commands\SetLevel::class, 2);
+	$bot->addCommand('mylevel', \Bot\Commands\MyLevel::class, 1);
+	$bot->addCommand('setprefix', \Bot\Commands\SetPrefix::class, 2);
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {
