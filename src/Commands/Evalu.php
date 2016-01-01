@@ -22,10 +22,9 @@ class Evalu
 		try {
 			eval('$response = '.implode(' ', $params).';');
 
-			if ($response == DISCORD_TOKEN) {
-				$message->reply('Message contains token, not sent.');
-				echo "[Security] Message contained token, not sent. Requested by {$message->author}\r\n";
-				return;
+			if (is_string($response)) {
+				$response = str_replace(DISCORD_TOKEN, 'TOKEN-HIDDEN', $response);
+				echo "[Security] {$message->author} ({$message->author->username}) tried to print out the token.\r\n";
 			}
 
 			$message->reply("`{$response}`");
