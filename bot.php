@@ -36,6 +36,7 @@ try {
 	$bot->addCommand('join', \Bot\Commands\Join::class, 2);
 	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2);
 	$bot->addCommand('info', \Bot\Commands\Info::class, 1);
+	$bot->addCommand('meme', \Bot\Commands\Meme::class, 1);
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {

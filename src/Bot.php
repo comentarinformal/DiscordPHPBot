@@ -78,6 +78,7 @@ class Bot
 				return;
 			}
 
+			echo "[Error] {$errno} {$errstr}\r\n";
 			throw new \Exception($errstr, $errno);
 		}, E_ALL);
 
