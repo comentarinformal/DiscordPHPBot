@@ -103,6 +103,10 @@ class Bot
 			});
 		}
 
+		$this->websocket->on('ready', function ($discord) {
+			$discord->updatePresence($this->websocket, 'DiscordPHP '.Discord::VERSION, false);
+		});
+
 		$this->websocket->run();
 	}
 
