@@ -9,5 +9,10 @@
             "name": "David",
             "email": "david@team-reflex.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bot\\": "src/"
+        }
+    }
 }

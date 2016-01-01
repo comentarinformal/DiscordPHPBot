@@ -1,51 +1,52 @@
 <?php
 
+define('DISCORDPHP_STARTTIME', microtime(true));
+
+use Bot\Bot;
+use Bot\Config;
 use Discord\Discord;
-use Discord\WebSockets\Event;
-use Discord\WebSockets\WebSocket;
 
 include 'vendor/autoload.php';
-include 'commands.php';
 
-echo "DiscordPHPBot".PHP_EOL;
-echo "Loading config...".PHP_EOL;
+echo "DiscordPHPBot\r\n";
 
 try {
-	$file = file_get_contents(__DIR__ . '/config.json');
-	$config = json_decode($file);
+	echo "Loading config...\r\n";
+	$config = new Config();
+	echo "Loaded config.\r\n";
 } catch (\Exception $e) {
-	echo "Unable to load config. {$e->getMessage()}".PHP_EOL;
+	echo "Failed loading config. {$e->getMessage()}\r\n";
 	die(1);
 }
 
-echo "Loaded config file, initilizing Discord instance...".PHP_EOL;
-
 try {
-	$discord = new Discord($config->email, $config->password);
-	$websocket = new WebSocket($discord);
+	echo "Initilizing the bot...\r\n";
+	$bot = new Bot($config);
+	echo "Initilized bot.\r\n";
 } catch (\Exception $e) {
-	echo "Unable to initilize Discord instance. {$e->getMessage()}".PHP_EOL;
+	echo "Could not initilize bot. {$e->getMessage()}\r\n";
 	die(1);
 }
 
-echo "Initlized Discord. Logged in as:".PHP_EOL."Username: {$discord->username}".PHP_EOL."Mention: <@{$discord->id}>".PHP_EOL;
-echo "Registering commands...".PHP_EOL;
+try {
+	echo "Loading commands...\r\n";
 
-$commands = [
-	// command => functionName
-	'help' => 'helpHandler'
-];
+	$bot->addCommand('help', \Bot\Commands\Help::class, 1);
+	$bot->addCommand('eval', \Bot\Commands\Evalu::class, 2);
+	$bot->addCommand('join', \Bot\Commands\Join::class, 2);
+	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2);
+	$bot->addCommand('info', \Bot\Commands\Info::class, 1);
 
-foreach ($commands as $key => $function) {
-	echo "Registering {$config->prefix}{$key}".PHP_EOL;
-
-	$websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $newdiscord) use ($config, $key, $function) {
-		if ($message->content == $config->prefix . $key) {
-			call_user_func_array($function, [$message, $newdiscord, $commands]);
-		}
-	});
+	echo "Loaded commands.\r\n";
+} catch (\Exception $e) {
+	echo "Could not load commands. {$e->getMessage()}\r\n";
+	die(1);
 }
 
-echo "Loaded all commands. Starting bot now...".PHP_EOL;
-
-$websocket->run();
+try {
+	echo "Starting the bot...\r\n";
+	$bot->start();
+} catch (\Exception $e) {
+	echo "Error while running or starting the bot. {$e->getMessage()}\r\n";
+	die(1);
+}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d9da6de6bbb9234cb84f13e6377494e",
+    "hash": "e0edf50f99921e0f6e53d596f3b68cc8",
     "content-hash": "87068846f1f5ffc790e7f76b620a7b43",
     "packages": [
         {
@@ -1387,12 +1387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "5fa6a5b5089473038a272250401b3c8c0176b1a9"
+                "reference": "95076f7301cfa66fcee5a50a56a3d29072ec4862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/5fa6a5b5089473038a272250401b3c8c0176b1a9",
-                "reference": "5fa6a5b5089473038a272250401b3c8c0176b1a9",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/95076f7301cfa66fcee5a50a56a3d29072ec4862",
+                "reference": "95076f7301cfa66fcee5a50a56a3d29072ec4862",
                 "shasum": ""
             },
             "require": {
@@ -1422,7 +1422,7 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2015-12-31 22:09:51"
+            "time": "2016-01-01 06:12:17"
         }
     ],
     "packages-dev": [],
