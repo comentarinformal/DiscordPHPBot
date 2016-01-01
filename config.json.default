@@ -1,13 +1,16 @@
 {
-	"email": "",
-	"password": "",
-	"prefix": "",
+  	"email": "",
+  	"password": "",
+  	"prefix": "%",
 	"perms": {
-		"levels": {
-			
-		},
+		"levels": [
+	  		"Banned",
+	  		"User",
+	  		"Admin"
+		],
 		"perms": {
 			
-		}
+		},
+		"default": "1"
 	}
 }
