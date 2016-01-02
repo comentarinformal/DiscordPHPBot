@@ -1,0 +1,16 @@
+{
+  	"email": "",
+  	"password": "",
+  	"prefix": "%",
+	"perms": {
+		"levels": [
+	  		"Banned",
+	  		"User",
+	  		"Admin"
+		],
+		"perms": {
+			
+		},
+		"default": "1"
+	}
+}
