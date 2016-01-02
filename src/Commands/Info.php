@@ -30,9 +30,9 @@ class Info
 		$uptime = Carbon::createFromTimestamp(DISCORDPHP_STARTTIME);
 
 		$str .= "**Uptime:** {$uptime->diffForHumans()}\r\n";
-		
-		$ram = round(memory_get_usage(true)/1000000, 2);
 
+		$ram  = round(memory_get_usage(true)/1000000, 2);
+		
 		$str .= "**Memory Usage:** {$ram}mb\r\n";
 
 		$str .= "\r\n**Author:** Uniquoooo `<@78703938047582208>`\r\n";

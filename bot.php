@@ -31,6 +31,7 @@ try {
 	$bot->addCommand('setlevel', \Bot\Commands\SetLevel::class, 2);
 	$bot->addCommand('mylevel', \Bot\Commands\MyLevel::class, 1);
 	$bot->addCommand('setprefix', \Bot\Commands\SetPrefix::class, 2);
+	$bot->addCommand('userinfo', \Bot\Commands\UserInfo::class, 1);
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {
