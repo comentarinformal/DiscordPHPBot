@@ -2,7 +2,7 @@
 
 namespace Bot\Commands;
 
-class Update
+class Restart
 {
 	/**
 	 * Handles the message.
@@ -15,8 +15,8 @@ class Update
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		$message->channel->sendMessage('Bot is going down for updates.');
+		$message->channel->sendMessage('Bot is restarting...');
 
-		eval("git pull && (echo '{$config['sudo_pass']}' | sudo supervisorctl restart {$config['supervisor_process']})");
+		eval("(echo '{$config['sudo_pass']}' | sudo supervisorctl restart {$config['supervisor_process']})");
 	}
 }
