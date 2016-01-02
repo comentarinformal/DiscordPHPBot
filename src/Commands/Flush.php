@@ -2,7 +2,7 @@
 
 namespace Bot\Commands;
 
-use Discord\Exceptions\DiscordRequestFailedException;
+use Discord\Exceptions\PartRequestFailedException;
 
 class Flush
 {
@@ -25,7 +25,7 @@ class Flush
 		foreach ($channel->messages as $key => $message) {
 			try {
 				$message->delete();
-			} catch (DiscordRequestFailedException $e) {
+			} catch (PartRequestFailedException $e) {
 				continue;
 			}
 			$num++;
