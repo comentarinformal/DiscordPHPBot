@@ -14,6 +14,5 @@
 		"default": "1"
 	},
 	"sudo_pass": "",
-	"dir": "",
 	"supervisor_directory": ""
 }
