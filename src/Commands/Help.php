@@ -16,16 +16,20 @@ class Help
 	 */
 	public static function handleMessage($message, $params, $discord, $config, $bot)
 	{
-		$str = '**Commands:** ';
+		$str = "**Commands:** \r\n";
 
 		$user_level = (isset($config['perms']['perms'][$message->author->id])) ? $config['perms']['perms'][$message->author->id] : $config['perms']['default'];
 
 		foreach ($bot->getCommands() as $command => $data) {
 			if ($user_level >= $data['perms']) {
-				$str .= $command . ', ';
+				$str .= "**_{$config['prefix']}{$command}_**";
+				if (!empty($data['usage'])) {
+					$str .= " - _{$data['usage']}_";
+				}
+				$str .= "\r\n	{$data['description']}\r\n";
 			}
 		}
 
-		$message->reply(substr($str, 0, -2));
+		$message->reply($str);
 	}
 }

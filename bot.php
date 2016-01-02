@@ -26,16 +26,16 @@ try {
 try {
 	echo "Loading commands...\r\n";
 
-	$bot->addCommand('help', \Bot\Commands\Help::class, 1);
-	$bot->addCommand('eval', \Bot\Commands\Evalu::class, 2);
-	$bot->addCommand('join', \Bot\Commands\Join::class, 2);
-	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2);
-	$bot->addCommand('info', \Bot\Commands\Info::class, 1);
-	$bot->addCommand('meme', \Bot\Commands\Meme::class, 1);
-	$bot->addCommand('setlevel', \Bot\Commands\SetLevel::class, 2);
-	$bot->addCommand('mylevel', \Bot\Commands\MyLevel::class, 1);
-	$bot->addCommand('setprefix', \Bot\Commands\SetPrefix::class, 2);
-	$bot->addCommand('userinfo', \Bot\Commands\UserInfo::class, 1);
+	$bot->addCommand('help', \Bot\Commands\Help::class, 1, 'Shows the help command.', '');
+	$bot->addCommand('eval', \Bot\Commands\Evalu::class, 2, 'Evaluates some code.', '<code>');
+	$bot->addCommand('join', \Bot\Commands\Join::class, 2, 'Joins the specified server.', '<invite>');
+	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2, 'Flushes the channels messages.', '[messages=15]');
+	$bot->addCommand('info', \Bot\Commands\Info::class, 1, 'Shows information about the bot.', '');
+	$bot->addCommand('meme', \Bot\Commands\Meme::class, 1, 'dank memes', '');
+	$bot->addCommand('setlevel', \Bot\Commands\SetLevel::class, 2, 'Sets the auth level of a user.', '<user> [level=2]');
+	$bot->addCommand('mylevel', \Bot\Commands\MyLevel::class, 1, 'Shows your auth level.', '');
+	$bot->addCommand('setprefix', \Bot\Commands\SetPrefix::class, 2, 'Sets the prefix for the bot.', '<prefix>');
+	$bot->addCommand('userinfo', \Bot\Commands\UserInfo::class, 1, 'Shows information about yourself or the specified user.', '[user]');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {

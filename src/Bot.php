@@ -58,13 +58,17 @@ class Bot
 	 * @param string $command 
 	 * @param string $class 
 	 * @param integer $perms
+	 * @param string $description 
+	 * @param string $usage 
 	 * @return void 
 	 */
-	public function addCommand($command, $class, $perms)
+	public function addCommand($command, $class, $perms, $description, $usage)
 	{
 		$this->commands[$command] = [
 			'perms' => $perms,
-			'class' => $class
+			'class' => $class,
+			'description' => $description,
+			'usage'	=> $usage
 		];
 	}
 
