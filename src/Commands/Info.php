@@ -24,7 +24,7 @@ class Info
 
 		$sha = substr(exec('git rev-parse HEAD'), 0, 7);
 
-		$str .= "**Current Version:** `{$sha}`\r\n";
+		$str .= "**Current Revision:** `{$sha}`\r\n";
 		$str .= "**PHP Version:** ".PHP_VERSION."\r\n";
 
 		$uptime = Carbon::createFromTimestamp(DISCORDPHP_STARTTIME);
@@ -36,6 +36,8 @@ class Info
 		$str .= "**Memory Usage:** {$ram}mb\r\n";
 
 		$str .= "**OS Info:** ".php_uname()."\r\n";
+
+		$str .= "**Source:** https://github.com/uniquoooo/DiscordPHPBot\r\n";
 
 		$str .= "\r\n**Author:** Uniquoooo `<@78703938047582208>`\r\n";
 
