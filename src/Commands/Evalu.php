@@ -11,9 +11,10 @@ class Evalu
 	 * @param array $params
 	 * @param Discord $discord 
 	 * @param Config $config 
+	 * @param Bot $bot 
 	 * @return void 
 	 */
-	public static function handleMessage($message, $params, $discord, $config)
+	public static function handleMessage($message, $params, $discord, $config, $bot)
 	{
 		if (!isset($params[1])) {
 			return;
