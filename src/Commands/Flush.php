@@ -2,6 +2,8 @@
 
 namespace Bot\Commands;
 
+use Discord\Exceptions\DiscordRequestFailedException;
+
 class Flush
 {
 	/**
@@ -17,13 +19,18 @@ class Flush
 	{
 		$rmmessages = (isset($params[1])) ? $params[1] : 15;
 		$channel = $message->channel;
-
+		$num = 0;
 		$channel->message_count = $rmmessages;
 
 		foreach ($channel->messages as $key => $message) {
-			$message->delete();
+			try {
+				$message->delete();
+			} catch (DiscordRequestFailedException $e) {
+				continue;
+			}
+			$num++;
 		}
 
-		$message->reply("Flushed {$rmmessages} messages.");
+		$message->reply("Flushed {$num} messages.");
 	}
 }
