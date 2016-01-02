@@ -24,7 +24,8 @@ class Evalu
 
 			if (is_string($response)) {
 				$response = str_replace(DISCORD_TOKEN, 'TOKEN-HIDDEN', $response);
-				echo "[Security] {$message->author} ({$message->author->username}) tried to print out the token.\r\n";
+
+				$response = str_replace($config['password'], 'PASSWORD-HIDDEN', $response);
 			}
 
 			$message->reply("`{$response}`");
