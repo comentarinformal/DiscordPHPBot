@@ -20,15 +20,17 @@ class Flush
 		$rmmessages = (isset($params[1])) ? $params[1] : 15;
 		$channel = $message->channel;
 		$num = 0;
-		$channel->message_count = $rmmessages;
+		$channel->message_count = $rmmessages + 1;
 
-		foreach ($channel->messages as $key => $message) {
-			try {
-				$message->delete();
-			} catch (PartRequestFailedException $e) {
-				continue;
+		foreach ($channel->messages as $key => $rmessage) {
+			if (!$rmessage->id == $message->id) {
+				try {
+					$rmessage->delete();
+				} catch (PartRequestFailedException $e) {
+					continue;
+				}
+				$num++;
 			}
-			$num++;
 		}
 
 		$message->reply("Flushed {$num} messages.");
