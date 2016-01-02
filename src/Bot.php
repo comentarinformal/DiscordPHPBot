@@ -32,13 +32,22 @@ class Bot
 	protected $commands = [];
 
 	/**
+	 * The config file.
+	 *
+	 * @var string
+	 */
+	protected $configfile;
+
+	/**
 	 * Constructs the bot instance.
 	 *
+	 * @param string $configfile 
 	 * @return void 
 	 */
-	public function __construct()
+	public function __construct($configfile)
 	{
-		$config = Config::getConfig();
+		$this->configfile = $configfile;
+		$config = Config::getConfig($this->configfile);
 		$this->discord = new Discord($config['email'], $config['password']);
 		$this->websocket = new WebSocket($this->discord);	
 	}
@@ -79,7 +88,7 @@ class Bot
 			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
 				$content = explode(' ', $message->content);
 
-				$config = Config::getConfig();
+				$config = Config::getConfig($this->configfile);
 
 				if ($content[0] == $config['prefix'] . $command) {
 					Arr::forget($content, 0);
@@ -118,5 +127,15 @@ class Bot
 	public function getCommands()
 	{
 		return $this->commands;	
+	}
+
+	/**
+	 * Returns the config file.
+	 *
+	 * @return string 
+	 */
+	public function getConfigFile()
+	{
+		return $this->configfile;
 	}
 }

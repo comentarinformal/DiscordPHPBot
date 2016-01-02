@@ -12,9 +12,11 @@ class Config
 	 */
 	public static function getConfig($filename = 'config.json')
 	{
-		$file = file_get_contents($_SERVER['PWD'] . '/' . $filename);
+		$file = file_get_contents($filename);
+		$arr = json_decode($file, true);
+		$arr['filename'] = $filename;
 
-		return json_decode($file, true);
+		return $arr;
 	}
 
 	/**
@@ -26,9 +28,10 @@ class Config
 	 */
 	public static function saveConfig($config, $filename = 'config.json')
 	{
+		unset($config['filename']);
 		$json = json_encode($config);
 		
-		file_put_contents($_SERVER['PWD'] . '/' . $filename, $json);
+		file_put_contents($filename, $json);
 
 		return $json;
 	}

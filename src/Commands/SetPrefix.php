@@ -19,7 +19,7 @@ class SetPrefix
 	{
 		$prefix = (isset($params[1])) ? $params[1] : $config['prefix'];
 		$config['prefix'] = $prefix;
-		Config::saveConfig($config);
+		Config::saveConfig($config, $config['filename']);
 
 		$message->reply("Set the prefix to `{$prefix}`");
 	}
