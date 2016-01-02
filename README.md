@@ -12,3 +12,4 @@ $ cp config.json.default config.json
 ```
 
 Fill out the fields in `config.json`.
+
