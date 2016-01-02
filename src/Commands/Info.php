@@ -35,6 +35,8 @@ class Info
 		
 		$str .= "**Memory Usage:** {$ram}mb\r\n";
 
+		$str .= "**OS Info:** ".php_uname()."\r\n";
+
 		$str .= "\r\n**Author:** Uniquoooo `<@78703938047582208>`\r\n";
 
 		$message->reply($str);	
