@@ -25,8 +25,8 @@ class Evalu
 
 			if (is_string($response)) {
 				$response = str_replace(DISCORD_TOKEN, 'TOKEN-HIDDEN', $response);
-
 				$response = str_replace($config['password'], 'PASSWORD-HIDDEN', $response);
+				$response = str_replace($config['sudo_pass'], 'SUDO-HIDDEN', $response);
 			}
 
 			$message->reply("`{$response}`");
