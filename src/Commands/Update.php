@@ -17,6 +17,6 @@ class Update
 	{
 		$message->channel->sendMessage('Bot is going down for updates.');
 
-		eval("cd {$config['dir']} && git pull && (echo '{$config['sudo_pass']}' | sudo supervisorctl restart {$config['supervisor_process']})");
+		eval("(cd {$config['dir']} && git pull) && (echo '{$config['sudo_pass']}' | sudo supervisorctl restart {$config['supervisor_process']})");
 	}
 }
