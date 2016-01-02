@@ -22,15 +22,13 @@ class Flush
 		$num = 0;
 		$channel->message_count = $rmmessages + 1;
 
-		foreach ($channel->messages as $key => $rmessage) {
-			if (!$rmessage->id == $message->id) {
-				try {
-					$rmessage->delete();
-				} catch (PartRequestFailedException $e) {
-					continue;
-				}
-				$num++;
+		foreach ($channel->messages as $key => $message) {
+			try {
+				$message->delete();
+			} catch (PartRequestFailedException $e) {
+				continue;
 			}
+			$num++;
 		}
 
 		$message->reply("Flushed {$num} messages.");
