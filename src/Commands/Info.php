@@ -28,8 +28,9 @@ class Info
 		$str .= "**PHP Version:** ".PHP_VERSION."\r\n";
 
 		$uptime = Carbon::createFromTimestamp(DISCORDPHP_STARTTIME);
+		$diff = $uptime->diff(Carbon::now());
 
-		$str .= "**Uptime:** {$uptime->diffForHumans()}\r\n";
+		$str .= "**Uptime:** {$diff->d} day(s), {$diff->h} hour(s), {$diff->i} minute(s), {$diff->s} second(s)\r\n";
 
 		$ram  = round(memory_get_usage(true)/1000000, 2);
 		
