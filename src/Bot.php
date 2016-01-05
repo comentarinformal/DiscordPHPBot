@@ -120,6 +120,15 @@ class Bot
 			$discord->updatePresence($this->websocket, 'DiscordPHP '.Discord::VERSION, false);
 		});
 
+		$this->websocket->on('error', function ($error, $ws) {
+			echo "[Error] {$error}\r\n";
+		});
+
+		$this->websocket->on('close', function () {
+			echo "[Close] WebSocket was closed.\r\n";
+			die;
+		});
+
 		$this->websocket->run();
 	}
 
