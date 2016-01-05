@@ -38,6 +38,7 @@ try {
 	$bot->addCommand('userinfo', \Bot\Commands\UserInfo::class, 1, 'Shows information about yourself or the specified user.', '[user]');
 	$bot->addCommand('restart', \Bot\Commands\Restart::class, 4, 'Restarts the bot.', '');
 	$bot->addCommand('coinflip', \Bot\Commands\Coinflip::class, 1, 'Does a coinflip.', '');
+	$bot->addCommand('8ball', \Bot\Commands\Eightball::class, 1, 'Magic 8 Ball!', '');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {
