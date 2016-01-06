@@ -32,6 +32,22 @@ class UserInfo
 		$str .= "**Discriminator:** {$user->discriminator}\r\n";
 		$str .= "**Mention:** `{$user}`\r\n";
 
+		$guildcount = 0;
+		$servers = '';
+
+		foreach ($discord->guilds as $guild) {
+			foreach ($guild->members as $member) {
+				if ($member->id == $user->id) {
+					$guildcount++;
+					$servers .= $guild->name . ", ";
+				}
+			}
+		}
+
+		$servers = rtrim($servers, ', ');
+
+		$str .= "**Shared Servers:** {$guildcount} _({$servers})_\r\n";
+
 		$message->channel->sendMessage($str);
 	}
 }
