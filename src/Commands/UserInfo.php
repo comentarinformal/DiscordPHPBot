@@ -49,7 +49,8 @@ class UserInfo
 		$str .= "**Shared Servers:** {$guildcount} _({$servers})_\r\n";
 
 		$level = (isset($config['perms']['perms'][$user->id])) ? $config['perms']['perms'][$user->id] : $config['perms']['default'];
-
+		$level = $config['perms']['levels'][$level];
+		
 		$str .= "**User Level:** {$level}\r\n";
 
 		$message->channel->sendMessage($str);
