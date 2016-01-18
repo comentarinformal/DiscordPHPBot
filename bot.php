@@ -39,6 +39,7 @@ try {
 	$bot->addCommand('restart', \Bot\Commands\Restart::class, 4, 'Restarts the bot.', '');
 	$bot->addCommand('coinflip', \Bot\Commands\Coinflip::class, 1, 'Does a coinflip.', '');
 	$bot->addCommand('8ball', \Bot\Commands\Eightball::class, 1, 'Magic 8 Ball!', '');
+	$bot->addCommand('guilds', \Bot\Commands\Guilds::class, 1, 'Shows all the guilds.', '');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {

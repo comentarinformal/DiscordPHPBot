@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0edf50f99921e0f6e53d596f3b68cc8",
-    "content-hash": "87068846f1f5ffc790e7f76b620a7b43",
+    "hash": "e27c9759d09099a6f288dc9c2afd479a",
+    "content-hash": "54a8ed3d51c2d2f266f6f1f768fe8dc6",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -543,7 +543,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -585,16 +585,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "7be481e742f527a5c4bc84e967bd06a31f50ec0e"
+                "reference": "6d8dec02825299b0ad47712564e9d33104e148c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/7be481e742f527a5c4bc84e967bd06a31f50ec0e",
-                "reference": "7be481e742f527a5c4bc84e967bd06a31f50ec0e",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/6d8dec02825299b0ad47712564e9d33104e148c4",
+                "reference": "6d8dec02825299b0ad47712564e9d33104e148c4",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-12-29 14:47:47"
+            "time": "2016-01-07 11:02:28"
         },
         {
             "name": "nesbot/carbon",
@@ -734,44 +734,6 @@
                 "response"
             ],
             "time": "2015-05-04 20:22:00"
-        },
-        {
-            "name": "ratchet/pawl",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ratchetphp/Pawl.git",
-                "reference": "b58948f6244e07bfcc8c8b824862ce41b1dad0d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Pawl/zipball/b58948f6244e07bfcc8c8b824862ce41b1dad0d3",
-                "reference": "b58948f6244e07bfcc8c8b824862ce41b1dad0d3",
-                "shasum": ""
-            },
-            "require": {
-                "cboden/ratchet": "0.3.*",
-                "php": ">=5.4",
-                "react/socket-client": "0.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ratchet\\Client\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Asynchronous WebSocket client",
-            "keywords": [
-                "Ratchet",
-                "async",
-                "client",
-                "websocket"
-            ],
-            "time": "2014-11-09 20:47:17"
         },
         {
             "name": "react/cache",
@@ -1383,23 +1345,24 @@
         },
         {
             "name": "team-reflex/discord-php",
-            "version": "dev-websockets",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "1038e4ab1836567e372821dc442e71f0c9f3eb7d"
+                "reference": "4aab133bd8aa3d5dfaa8392b23d0ecd453f22987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/1038e4ab1836567e372821dc442e71f0c9f3eb7d",
-                "reference": "1038e4ab1836567e372821dc442e71f0c9f3eb7d",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/4aab133bd8aa3d5dfaa8392b23d0ecd453f22987",
+                "reference": "4aab133bd8aa3d5dfaa8392b23d0ecd453f22987",
                 "shasum": ""
             },
             "require": {
+                "cboden/ratchet": "0.3.*",
                 "guzzlehttp/guzzle": "~5.3|~6.0",
                 "illuminate/support": "^5.1",
                 "nesbot/carbon": "^1.21",
-                "ratchet/pawl": "^0.1.2"
+                "react/socket-client": "0.4.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.1",
@@ -1422,15 +1385,13 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2016-01-01 23:10:28"
+            "time": "2016-01-16 23:01:57"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "team-reflex/discord-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
