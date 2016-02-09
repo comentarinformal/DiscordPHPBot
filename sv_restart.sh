@@ -1,0 +1,1 @@
+pkill bot.php && nohup php bot.php &

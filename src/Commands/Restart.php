@@ -17,6 +17,6 @@ class Restart
 	{
 		$message->channel->sendMessage('Bot is restarting...');
 
-		eval("(echo '{$config['sudo_pass']}' | sudo supervisorctl restart {$config['supervisor_process']})");
+		eval("shell ./sv_restart.sh");
 	}
 }
