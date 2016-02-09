@@ -1,5 +1,8 @@
 <?php
 
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('coinflip',\Bot\Commands\Coinflip::class, 1, 'Does a coinflip.', '');
+}
 namespace Bot\Commands;
 
 class Coinflip
