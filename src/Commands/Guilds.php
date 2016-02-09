@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('guilds', \Bot\Commands\Guilds::class, 1, 'Shows all the guilds.', '');
+}
 class Guilds
 {
 	/**

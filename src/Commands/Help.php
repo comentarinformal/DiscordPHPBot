@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('help', \Bot\Commands\Help::class, 1, 'Shows the help command.', '');
+}
 class Help
 {
 	/**

@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('setprefix', \Bot\Commands\SetPrefix::class, 2, 'Sets the prefix for the bot.', '<prefix>');
+}
 use Bot\Config;
 
 class SetPrefix

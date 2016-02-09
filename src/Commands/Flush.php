@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('flush', \Bot\Commands\Flush::class, 2, 'Flushes the channels messages.', '[messages=15]');
+}
 use Discord\Exceptions\PartRequestFailedException;
 
 class Flush

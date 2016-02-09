@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('eval', \Bot\Commands\Evalu::class, 2, 'Evaluates some code.', '<code>');
+}
 class Evalu
 {
 	/**

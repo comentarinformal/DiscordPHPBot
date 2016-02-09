@@ -1,6 +1,9 @@
 <?php
 
 namespace Bot\Commands;
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('reload',\Bot\Commands\Reload::class,2,'Reloads all commands','');
+}
 
 class Reload
 {
@@ -15,16 +18,21 @@ class Reload
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		$loadedComms = count($this->websocket->listeners(Event::MESSAGE_CREATE));
+		$loadedComms = count($discord->websocket->listeners(Event::MESSAGE_CREATE));
 		$message->channel->sendMessage('-'.count($loadedComms).' COMMANDS BEFORE RELOAD -');
 		$message->channel->sendMessage('Reloading all commands from disk...');
 		
-		$this->websocket->removeAllListeners(Event::MESSAGE_CREATE);
+		$discord->websocket->removeAllListeners(Event::MESSAGE_CREATE);
+		$commandResearch = glob('./src/Commands/*.php');
+		$commandLoad = true;
+		foreach($commandResearch as $file){
+			include($file);
+		}
 		$currCommands = getCommands();
 		foreach ($currCommands as $command => $data) {
-			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
+			$discord->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
 				$content = explode(' ', $message->content);
-				$config = Config::getConfig($this->configfile);
+				$config = Config::getConfig($discord->configfile);
 				if ($content[0] == $config['prefix'] . $command) {
 					Arr::forget($content, 0);
 					$user_perms = @$config['perms']['perms'][$message->author->id];
@@ -44,7 +52,7 @@ class Reload
 				}
 			});
 		}
-		$loadedComms = count($this->websocket->listeners(Event::MESSAGE_CREATE));
+		$loadedComms = count($discord->websocket->listeners(Event::MESSAGE_CREATE));
 		$message->channel->sendMessage('-'.count($loadedComms).' COMMANDS AFTER RELOAD -');
 	}
 }

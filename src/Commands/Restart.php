@@ -1,6 +1,9 @@
 <?php
 
 namespace Bot\Commands;
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('restart', \Bot\Commands\Restart::class, 2, 'Restarts the bot.', '');
+}
 
 class Restart
 {
@@ -17,6 +20,6 @@ class Restart
 	{
 		$message->channel->sendMessage('Bot is restarting...');
 
-		eval("shell ./sv_restart.sh");
+		eval("shell ../../sv_restart.sh");
 	}
 }

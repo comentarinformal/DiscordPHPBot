@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('info', \Bot\Commands\Info::class, 1, 'Shows information about the bot.', '');
+}
 use Carbon\Carbon;
 use Discord\Discord;
 

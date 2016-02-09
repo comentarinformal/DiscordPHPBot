@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('mylevel', \Bot\Commands\MyLevel::class, 0, 'Shows your auth level.', '');
+}
 class MyLevel
 {
 	/**

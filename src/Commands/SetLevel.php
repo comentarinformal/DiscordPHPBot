@@ -1,7 +1,9 @@
 <?php
 
 namespace Bot\Commands;
-
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('setlevel', \Bot\Commands\SetLevel::class, 2, 'Sets the auth level of a user.', '<user> [level=2]');
+}
 use Bot\Config;
 
 class SetLevel

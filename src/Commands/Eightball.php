@@ -1,6 +1,9 @@
 <?php
 
 namespace Bot\Commands;
+if(isset($commandLoad) && $commandLoad == true){
+	$bot->addCommand('8ball', \Bot\Commands\Eightball::class, 1, 'Magic 8 Ball!', '');
+}
 
 class Eightball
 {
