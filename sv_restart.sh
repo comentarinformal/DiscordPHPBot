@@ -1,1 +1,1 @@
-pkill bot.php && nohup php bot.php &
+pkill -9 -f "php bot.php" && nohup php bot.php &
