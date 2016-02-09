@@ -15,11 +15,11 @@ class Reload
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		$loadedComms = count($this-websocket->listeners(Event::MESSAGE_CREATE));
+		$loadedComms = count($this->websocket->listeners(Event::MESSAGE_CREATE));
 		$message->channel->sendMessage('-'.count($loadedComms).' COMMANDS BEFORE RELOAD -');
 		$message->channel->sendMessage('Reloading all commands from disk...');
 		
-		$this-websocket->removeAllListeners(Event::MESSAGE_CREATE);
+		$this->websocket->removeAllListeners(Event::MESSAGE_CREATE);
 		$currCommands = getCommands();
 		foreach ($currCommands as $command => $data) {
 			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
@@ -44,7 +44,7 @@ class Reload
 				}
 			});
 		}
-		$loadedComms = count($this-websocket->listeners(Event::MESSAGE_CREATE));
+		$loadedComms = count($this->websocket->listeners(Event::MESSAGE_CREATE));
 		$message->channel->sendMessage('-'.count($loadedComms).' COMMANDS AFTER RELOAD -');
 	}
 }
