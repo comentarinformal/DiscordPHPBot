@@ -20,6 +20,6 @@ class Restart
 	{
 		$message->channel->sendMessage('Bot is restarting...');
 
-		eval("shell ../../sv_restart.sh");
+		exec("bash ./sv_restart.sh");
 	}
 }
